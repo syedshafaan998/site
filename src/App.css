@@ -1,0 +1,154 @@
+.navbarCustom {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+.nav-link:hover {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #39f;
+  border-radius: 10px;
+
+
+}
+
+.nav-link {
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.btnAddToCart {
+
+  margin: 5px;
+  border-radius: 7px;
+  font-size: 20px;
+
+
+
+}
+
+.btnedit {
+  width: 20px !important;
+}
+
+.cardpro {
+  margin-top: 20px;
+  position: relative;
+
+  background-color: #FF7F50;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.cardpro::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  width: 100%;
+  height: 100%;
+  background: #39f;
+  transform: skewY(345deg);
+  transition: 0.5s;
+}
+
+.cardpro:hover::before {
+  top: -70%;
+  transform: skewY(390deg);
+}
+
+.cardpro::after {
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-weight: 600;
+  font-size: 6em;
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.cardpro .imgBox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 1;
+}
+
+/*
+  .cardpro .imgBox img {
+      max-width: 100%;
+      
+      transition: .5s;
+  }
+  
+  .cardpro:hover .imgBox img {
+      max-width: 50%;
+        
+  }
+  */
+.cardpro .contentBox {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.cardpro .contentBox h3 {
+  font-size: 18px;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cardpro .contentBox .price {
+  font-size: 24px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.cardpro .contentBox .buy {
+  position: relative;
+  top: 100px;
+  opacity: 0;
+ 
+
+  color: #000000;
+  text-decoration: none;
+  background: #39f;
+  border-radius: 30px;
+  text-transform: uppercase;
+ 
+  transition: 0.5s;
+}
+
+.cardpro:hover .contentBox .buy {
+  top: 0;
+  opacity: 1;
+}
+
+.mouse {
+  height: 300px;
+  width: auto;
+}
+
+
+/* like btn css */
+.cardLikeBtn {
+  background: transparent !important;
+  border: none;
+  float: right;
+  
+ 
+ 
+
+}
+
+

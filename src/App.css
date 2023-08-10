@@ -31,6 +31,7 @@
 
 .btnedit {
   width: 20px !important;
+  margin-bottom: 3px;
 }
 
 .cardpro {
@@ -77,18 +78,6 @@
   z-index: 1;
 }
 
-/*
-  .cardpro .imgBox img {
-      max-width: 100%;
-      
-      transition: .5s;
-  }
-  
-  .cardpro:hover .imgBox img {
-      max-width: 50%;
-        
-  }
-  */
 .cardpro .contentBox {
   position: relative;
   padding: 20px;

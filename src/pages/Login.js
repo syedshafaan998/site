@@ -17,7 +17,7 @@ function Login() {
 
     const handleLogin = () => {
         setIsLoading(true);
-        axios.post("http://localhost:3003/login", {
+        axios.post("http://localhost:3007/login", {
             email: email,
             password: password
         }).then((response) => {
@@ -54,7 +54,7 @@ function Login() {
                     <label className="form-check-label" htmlFor="exampleCheck1">
                         Don't have account?
                     </label>
-                    <Link to="/register" className='mx-2 link'>Register</Link>
+                    <Link to="/signup" className='mx-2 link'>Register</Link>
                 </div>
                 <div>
                     {

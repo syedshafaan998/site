@@ -1,22 +1,16 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import jwt_decode from "jwt-decode";
+import { Link, useNavigate } from "react-router-dom";
 
 function Cart(props) {
-  const [user, setUser] = useState("");
-  const [address, setAddress] = useState("");
-  const [contact, setContact] = useState("");
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
+  const [details, setDetails] = useState("");
+  const [brand, setBrand] = useState("");
+  const [price, setPrice] = useState("");
 
   const [orders, setOrders] = useState([]);
-  useEffect(() => {
-    const token = localStorage.getItem("ssid");
-    const decodedToken = jwt_decode(token);
-    if (decodedToken) {
-      const userId = decodedToken.id;
-      setUser(userId);
-    }
-  }, []);
+
 
   const deleteOne = (index) => {
     const updatedCart = [...props.cart];
@@ -41,27 +35,30 @@ function Cart(props) {
   const handleSubmit = async () => {
     try {
       const orderRequests = props.cart.map((food) => {
-        return axios.post("http://localhost:3003/create-order", {
-          users: user,
-          deals: food._id,
-          quantity: food.quantity,
-          price: food.quantity * food.price,
-          address:address,
-          contact:contact
+        return axios.post("http://localhost:3007/order-create", {
+          name: name,
+          image: image,
+          details: details,
+          brand: brand,
+          price: price
+
         });
       });
 
       const responses = await Promise.all(orderRequests);
       const createdOrders = responses.map((res) => res.data.message);
       setOrders(createdOrders);
-      setAddress("")
-      setContact("")
+      setName("")
+      setImage("")
+      setDetails("")
+      setBrand("")
+      setPrice("")
       props.setCart([]);
     } catch (error) {
       console.error(error);
     }
   };
-console.log(orders)
+  console.log(orders)
   let totalPrice = 0;
 
   return (
@@ -94,11 +91,11 @@ console.log(orders)
                             </div>
                             <div className="col-md-3 col-lg-3 col-xl-2 d-flex">
                               <button className="btn btn-link px-2" onClick={() => minus(index)}>
-                                <i className="fas fa-minus"></i>
+                                -
                               </button>
                               <input
                                 id={`form${index}`}
-                              style={{width:"30px"}}
+                                style={{ width: "30px" }}
                                 name="quantity"
                                 value={food.quantity}
                                 type="text"
@@ -106,8 +103,7 @@ console.log(orders)
                                 className="form-control form-control-sm"
                               />
                               <button className="btn btn-link px-2" onClick={() => plus(index)}>
-                                <i className="fas fa-plus"></i>
-                              </button>
+                                +                              </button>
                             </div>
                             <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                               <h6 className="mb-0">{food.quantity * food.price}</h6>
@@ -149,15 +145,15 @@ console.log(orders)
                       <h5 className="text-uppercase mb-3">Enter Your Addres</h5>
                       <div className="mb-5">
                         <div className="form-outline">
-                          <input type="text" id="form3Examplea2" onChange={(e)=>{setAddress(e.target.value)}} className="form-control form-control-lg" />
-                         
+                          <input type="text" id="form3Examplea2" onChange={(e) => { setDetails(e.target.value) }} className="form-control form-control-lg" />
+
                         </div>
                       </div>
                       <h5 className="text-uppercase mb-3">Enter Your Contact No</h5>
                       <div className="mb-5">
                         <div className="form-outline">
-                          <input type="text" id="form3Examplea2"  onChange={(e)=>{setContact(e.target.value)}} className="form-control form-control-lg" />
-                          
+                          <input type="text" id="form3Examplea2" onChange={(e) => { setPrice(e.target.value) }} className="form-control form-control-lg" />
+
                         </div>
                       </div>
                       <hr className="my-4" />
@@ -171,7 +167,7 @@ console.log(orders)
                         data-mdb-ripple-color="dark"
                         onClick={handleSubmit}
                       >
-                       Shop Now
+                        Shop Now
                       </button>
                     </div>
                   </div>

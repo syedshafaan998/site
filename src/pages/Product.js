@@ -1,5 +1,9 @@
-import React, { useState } from 'react'
+import React, {useContext, useEffect, useState } from 'react'
 import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
+import { Link, useNavigate } from 'react-router-dom'
+import '../styels/AdminPanal.css';
+
 
 
 function Product() {
@@ -9,6 +13,18 @@ function Product() {
   const [brand, setBrand] = useState("");
   const [price, setPrice] = useState("");
   const [ error ,setError] =useState("");
+  const UserContext = useContext(AuthContext);
+  const navigator = useNavigate();
+
+
+
+  useEffect(() => {
+   
+
+    if (UserContext.user?.role !== "admin") {
+      navigator("/");
+    }
+  }, []);
 
 
   const handleSubmit = () => {
@@ -25,7 +41,9 @@ function Product() {
       headers:{
         'Content-Type' : 'multipart/form-data'
       }
+      
     },
+    
       ).then( (res) => {
         console.log(res.data)
         if(res.data.status == true) {
@@ -40,12 +58,9 @@ function Product() {
 
   return (
     <>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div style={{ width: "600px" }} className='mx-auto'>
-          <div className="mb-3">
-            <label htmlFor="formFile" className="form-label">Image :</label>
-            <input onChange={(e) => { setImage(e.target.files[0]) }} className="form-control" type="file" id="formFile" />
-          </div>
+      <form className='createProduct' onSubmit={(e) => e.preventDefault()}>
+        <div style={{ width: "600px" }} className='mx-auto '>
+          
           <div className="mb-3">
             <label htmlFor="name" className="form-label">Name :</label>
             <input onChange={(e) => { setName(e.target.value) }} type="text" className="form-control" id="name" />
@@ -62,6 +77,10 @@ function Product() {
           <div className="mb-3">
             <label htmlFor="address" className="form-label">Price :</label>
             <input onChange={(e) => { setPrice(e.target.value) }} type="text" className="form-control" id="price" />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="formFile" className="form-label">Image :</label>
+            <input onChange={(e) => { setImage(e.target.files[0]) }} className="form-control" type="file" id="formFile" />
           </div>
           {/* <div className="mb-3">
             <label htmlFor="exampleFormControlTextarea1" className="form-label">About</label>

@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styels/wish.css'
-import Product from './Product'
+import product from './Product'
 import { Link } from 'react-router-dom'
 
 function Wishlist(props) {
@@ -44,7 +44,7 @@ function Wishlist(props) {
                                                         </td>
                                                         <td width="15%" className="price">{wish.price }</td>
                                                         <td width="15%"><span className="in-stock-box">In Stock</span></td>
-                                                        <td width="15%"><button className="round-black-btn small-btn">Add to Cart</button></td>
+                                                        <td width="15%"><button className="round-black-btn small-btn" onClick={() => { props.addToCart(product) }}  >Add to Cart</button></td>
                                                         <td width="10%" className="text-center"><Link href="#" className="trash-icon"><i className="far fa-trash-alt"></i></Link></td>
                                                     </tr>
                                                 </tbody>

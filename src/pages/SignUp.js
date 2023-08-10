@@ -33,7 +33,7 @@ function SignUp() {
     formData.append("password", password);
     formData.append("image", image);
 
-    axios.post('http://localhost:3007/signup/', formData)
+    axios.post('http://localhost:3007/signup', formData)
       .then((res) => {
         if (res.data.status === true) {
           // Registration successful, navigate to the login page
@@ -81,10 +81,7 @@ function SignUp() {
                 <input type="file" onChange={(event) => { setImage(event.target.files[0]) }} />
               </div>
 
-              <div className='mb-4'>
-                <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
-              </div>
-
+             
               <MDBBtn className='mb-4' size='lg' onClick={handleSubmit} disabled={isLoading}>
                 {isLoading ? 'Loading...' : 'Register'}
               </MDBBtn>

@@ -13,7 +13,7 @@ function Search() {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get(`http://localhost:3003/search?q=${q}&price=${price}`).then((res) => {
+    axios.get(`http://localhost:3007/search?q=${q}&price=${price}`).then((res) => {
       if (res.data.status == true) {
         setProducts(res.data.products);
         setIsLoading(false);

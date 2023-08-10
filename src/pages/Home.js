@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom"
 import Product from './Product';
 import thumb from "../images/thumbs-up.png"
+import SlideBar from '../pages/SlideBar';
+
 
 
 function Home(props) {
@@ -39,12 +41,15 @@ function Home(props) {
   }
 
   console.log(products);
-
   if (props.products?.length > 0) {
 
     <div className='row'>
+
+
       {
         props.products.map((product) => {
+
+          
           return (
             <Product AddToWishlist={props.AddToWishlist} addToCart={props.addToCart} product={product} key={product.id} />
 
@@ -55,7 +60,11 @@ function Home(props) {
     </div>
 
     return (
-      <><div className="spinner-border" role="status">
+
+      
+      <>
+      
+      <div className="spinner-border" role="status">
         <span className="visually-hidden">Loading...</span>
       </div></>
     )
@@ -104,6 +113,8 @@ function Home(props) {
             })
           }
         </div></div>
+        <SlideBar />
+
       </>
     )
   }

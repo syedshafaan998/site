@@ -14,13 +14,14 @@ import Cart from './pages/Cart';
 import Wishlist from './pages/Wishlist';
 import Dashboard from "./pages/Dashboard";
 import Shop from './pages/Shop';
-import Register from "./pages/Register"
+// import Register from "./pages/Register"
 import Contact from "./pages/Contact"
 import Footer from "./components/Footer"
 import Header from './components/Header';
 import ProductDetails from './pages/ProductDetails';
 import OnlyAuth from './components/OnlyAuth';
 import { AuthContext } from './context/AuthContext';
+import SlideBar from './pages/SlideBar';
 
 // import { ToastContainer, toast, Flip } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -87,9 +88,10 @@ function App() {
         pauseOnHover={false}
         theme="light"
       /> */}
-        {/* <Navbar /> */}
+        {/* <Navbar  cart={cart} wish={wish}/> */}
 
         <Header cart={cart} wish={wish} />
+      
         <Routes>
           <Route path='/' element={<Home addToCart={addToCart} />} />
           {/* <Route path='/' element={<Home1 />} /> */}
@@ -101,12 +103,13 @@ function App() {
           {/* <Route path='/profile' element={ <OnlyAuth> <Profile /> </OnlyAuth> } /> */}
           <Route path='/product' element={<Product />} />
           <Route path='/Shop' element={<Shop />} />
-          <Route path='/Register' element={<Register />} />
+          {/* <Route path='/Register' element={<Register />} /> */}
           <Route path='/product-detail/:id' element={<ProductDetails addToCart={addToCart} AddToWishlist={AddToWishlist} />} />
-          <Route path='/Cart' element={<Cart cart={cart} removeFromCart={removeFromCart} removeCartAll={removeCartAll} />} />
-          <Route path='/Wishlist' element={<Wishlist wish={wish} />} />
+          <Route path='/Cart' element={<Cart cart={cart}  addToCart={addToCart} removeFromCart={removeFromCart} removeCartAll={removeCartAll} />} />
+          <Route path='/Wishlist' element={<Wishlist wish={wish} addToCart={addToCart} />} />
 
           <Route path='/Contact' element={<Contact />} />
+          <Route path='/slide' element={<SlideBar />} />
 
         </Routes>
         <Footer />

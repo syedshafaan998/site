@@ -12,7 +12,7 @@ function DataTable() {
 
     useEffect(() => {
         async function getProducts() {
-            const res = await fetch("https://fakestoreapi.com/products");
+            const res = await fetch("https://localhost:3007/products");
             const data = await res.json();
             setProducts(data);
             

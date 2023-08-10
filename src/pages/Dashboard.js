@@ -47,6 +47,7 @@ function Dashboard() {
   }
   else {
     if (product.length > 0) {
+      
       return (
         <div>
           <button onClick={() => navigator(-1)}>Back</button>

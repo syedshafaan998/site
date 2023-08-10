@@ -46,7 +46,7 @@ function Dashboard() {
     navigator("/");
   }
   else{
-    if(product.length < 0){
+    if(product.length > 0){
       return (
         <div>
           <button onClick={() => navigator(-1)}>Back</button>
@@ -100,7 +100,7 @@ function Dashboard() {
                             // onClick={() => {
                             //   updateItem(product.id);
                             // }}
-                            className="btn  mt-3 btn-dark border-white"><Link className='text-white' to={`/update/${product.id}`} style={{ textDecoration: "none" }}>
+                            className="btn  mt-3 btn-dark border-white"><Link className='text-white' to={`/product-update/${product.id}`} style={{ textDecoration: "none" }}>
                               Update </Link>
                           </button>
                         </td>

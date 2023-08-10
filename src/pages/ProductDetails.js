@@ -24,16 +24,7 @@ function ProductDetails(props) {
       setProduct(res.data.product);
     })
   }, []);
-  const handleDelete = () => {
-    axios.delete("http://localhost:3007/product-delete/" + id).then((res) => {
-      if (res.data.status == true) {
-        alert("successfully delete");
-        navigate("/");
-      } else {
-        alert("not deleted")
-      }
-    })
-  }
+ 
 
 
 

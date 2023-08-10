@@ -60,7 +60,7 @@ function Dashboard() {
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Movie Name</th>
+                  <th scope="col"> Name</th>
                   <th scope="col">Image</th>
                   <th scope="col">Brand</th>
                   <th scope="col">Action</th>
@@ -91,7 +91,7 @@ function Dashboard() {
                             onClick={() => {
                               deleteItem(product.id);
                             }}
-                            className="btn btn-dark border-white"
+                            className="btn btn-danger border-white"
                           >
                             Delete
                           </button>
@@ -100,7 +100,7 @@ function Dashboard() {
                             // onClick={() => {
                             //   updateItem(product.id);
                             // }}
-                            className="btn  mt-3 btn-dark border-white"><Link className='text-white' to={`/product-update/${product.id}`} style={{ textDecoration: "none" }}>
+                            className="btn  mt-3 btn-dark border-white"><Link className='text-white' to={`/update-product/${product._id}`} style={{ textDecoration: "none" }}>
                               Update </Link>
                           </button>
                         </td>

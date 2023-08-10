@@ -10,7 +10,7 @@ import Login from './pages/Login';
 import Logout from "./pages/Logout";
 import SignUp from "./pages/SignUp";
 import Product from "./pages/Product";
-import Update from './pages/Update';
+
 import Cart from './pages/Cart';
 import Wishlist from './pages/Wishlist';
 import Dashboard from "./pages/Dashboard";
@@ -23,6 +23,7 @@ import ProductDetails from './pages/ProductDetails';
 import OnlyAuth from './components/OnlyAuth';
 import { AuthContext } from './context/AuthContext';
 import SlideBar from './pages/SlideBar';
+import Update from './pages/Update';
 
 // import { ToastContainer, toast, Flip } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -103,7 +104,7 @@ function App() {
           <Route path='/Dashboard' element={<Dashboard />} />
           {/* <Route path='/profile' element={ <OnlyAuth> <Profile /> </OnlyAuth> } /> */}
           <Route path='/product' element={<Product />} />
-          <Route path='/update' element={<Update />} />
+          <Route path='/update-product/:id' element={<Update />} />
 
           <Route path='/Shop' element={<Shop />} />
           {/* <Route path='/Register' element={<Register />} /> */}

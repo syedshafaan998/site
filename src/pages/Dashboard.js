@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState  } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { getToken } from "../helpers";
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext';
@@ -22,7 +22,7 @@ function Dashboard() {
         console.log(err);
       });
 
-    
+
   }, []);
   console.log(product)
   function deleteItem(id) {
@@ -45,13 +45,13 @@ function Dashboard() {
   if (UserContext.user?.role !== "admin") {
     navigator("/");
   }
-  else{
-    if(product.length > 0){
+  else {
+    if (product.length > 0) {
       return (
         <div>
           <button onClick={() => navigator(-1)}>Back</button>
-          
-          
+
+
           <div className="container">
             <div className="createMovie">
               <Link style={{ marginLeft: "45%", marginTop: "10px" }} to="/product " className='btn btn-dark border-white '>Create-Product</Link>
@@ -66,63 +66,64 @@ function Dashboard() {
                   <th scope="col">Action</th>
                 </tr>
               </thead>
-            {
-              product?.map((product, index)=>{
-                return (
-                  <>
-                    <tbody>
-                      <tr>
-                        <th scope="row">{index + 1}</th>
-                        <td style={{ width: "350px" }}>
-                          {product.name}
-                          <br></br>Likes: {product.likes}
-                          
-                          
-                        </td>
-                        <td>
-                          <img
-                            src={product.image}
-                            style={{ width: "180px", height: "100px" }}
-                          />
-                        </td>
-                        <td>{product.brand}</td>
-                        <td>
-                          <button
-                            onClick={() => {
-                              deleteItem(product.id);
-                            }}
-                            className="btn btn-danger border-white"
-                          >
-                            Delete
-                          </button>
-                          <br />
-                          <button
-                            // onClick={() => {
-                            //   updateItem(product.id);
-                            // }}
-                            className="btn  mt-3 btn-dark border-white"><Link className='text-white' to={`/update-product/${product._id}`} style={{ textDecoration: "none" }}>
-                              Update </Link>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </>
-                );
-  
-              })
-            }
+
+              {
+                product?.map((product, index) => {
+                  return (
+                    <>
+                      <tbody>
+                        <tr>
+                          <th scope="row">{index + 1}</th>
+                          <td style={{ width: "350px" }}>
+                            {product.name}
+                            <br></br>Likes: {product.likes}
+
+
+                          </td>
+                          <td>
+                            <img
+                              src={product.image}
+                              style={{ width: "180px", height: "100px" }}
+                            />
+                          </td>
+                          <td>{product.brand}</td>
+                          <td>
+                            <button
+                              onClick={() => {
+                                deleteItem(product.id);
+                              }}
+                              className="btn btn-danger border-white"
+                            >
+                              Delete
+                            </button>
+                            <br />
+                            <button
+                              // onClick={() => {
+                              //   updateItem(product.id);
+                              // }}
+                              className="btn  mt-3 btn-dark border-white"><Link className='text-white' to={`/update-product/${product._id}`} style={{ textDecoration: "none" }}>
+                                Update </Link>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </>
+                  );
+
+                })
+              }
             </table>
           </div>
         </div>
       )
 
     }
-  
-    
+
+
 
   }
 
- 
+
   // }
 
 }
